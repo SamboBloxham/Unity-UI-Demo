@@ -50,6 +50,15 @@ Knuckles,
 Bayonetta,
 Triss,
 Cirila,
+Aloy,
+Handsome Jack,
+Isabelle,
+Madeline,
+Monika,
+Sans,
+Shovel Knight,
+Ori,
+Dr Eggman,
 
 
 
