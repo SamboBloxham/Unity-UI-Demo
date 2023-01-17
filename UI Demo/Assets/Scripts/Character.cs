@@ -6,9 +6,8 @@ using UnityEngine;
 public class Character : ScriptableObject
 {
 
-    
 
-    public Texture2D image;
+    public Sprite sprite;
 
     public bool answered = false;
 

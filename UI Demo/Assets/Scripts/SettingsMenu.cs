@@ -23,6 +23,8 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("AudioVolume");
+
+        if (PlayerPrefs.GetInt("DarkMode") == 1) darkModeToggle.isOn = true; 
     }
 
 
@@ -52,12 +54,16 @@ public class SettingsMenu : MonoBehaviour
     {
         if(darkModeToggle.isOn)
         {
+            PlayerPrefs.SetInt("DarkMode", 1);
             darknessMaterial.color = Color.grey;
         }
         else
         {
+            PlayerPrefs.SetInt("DarkMode", 0);
             darknessMaterial.color = Color.white;
         }
+
+
     }
 
     public void AskToClearHighscore()

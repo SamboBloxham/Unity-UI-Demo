@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class UIController : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class UIController : MonoBehaviour
 
 
     public Animator uiAnimator;
+
+
+    [SerializeField]
+    ParticleSystem confettiParticleSystem;
+
 
     void Awake()
     {
@@ -26,10 +32,41 @@ public class UIController : MonoBehaviour
         uiAnimator.SetBool("inSettings", false);
     }
 
-    public void ShowQuestionsScreen()
-    {
+    bool mainMenuShown = true;
 
+    public void HideMainMenu()
+    {
+        uiAnimator.SetBool("inMainMenu", false);
     }
+
+    public void ShowMainMenu()
+    {
+        uiAnimator.SetBool("inMainMenu", true);
+    }
+
+
+    public void ShowResultsScreen()
+    {
+        uiAnimator.SetBool("inResults", true);
+    }
+
+    public void HideResultsScreen()
+    {
+        uiAnimator.SetBool("inResults", false);
+    }
+
+    public void NewHighscore()
+    {
+        uiAnimator.SetTrigger("newHighscore");
+    }
+
+    public void HighscoreConfetti()
+    {
+        print("highscore CONFET");
+
+        confettiParticleSystem.Play();
+    }
+
 
 
 }

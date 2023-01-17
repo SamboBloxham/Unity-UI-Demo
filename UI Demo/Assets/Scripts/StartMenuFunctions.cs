@@ -6,7 +6,7 @@ public class StartMenuFunctions : MonoBehaviour
 {
     public void Play()
     {
-        UIController.Instance.ShowQuestionsScreen();
+        UIController.Instance.HideMainMenu();
     }
 
     public void Settings()

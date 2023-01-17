@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b47d487ed0d19c64db0a058340fdf0ee, type: 3}
-  m_Name: Mario - Super Mario
+  m_Name: Mega Man - Mega Man
   m_EditorClassIdentifier: 
-  image: {fileID: 2800000, guid: 072be2323348e244ea0c5f9bc24f883d, type: 3}
+  sprite: {fileID: 21300000, guid: 6029e4d4d9de4774392f50a08981a0e2, type: 3}
   answered: 0
