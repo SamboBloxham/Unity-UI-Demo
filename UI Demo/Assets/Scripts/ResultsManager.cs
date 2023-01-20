@@ -24,6 +24,7 @@ public class ResultsManager : MonoBehaviour
     TMP_Text resultScoreText;
 
 
+
     // Start is called before the first frame update
     public void AddResult(Character character, string userAnswer)
     {

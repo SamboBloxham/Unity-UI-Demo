@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
-using UnityEngine.XR;
-using static UnityEditor.Progress;
+///using static UnityEditor.Progress;
 //using UnityEngine.TextCore.Text;
 
 public class QuestionMaster : MonoBehaviour
@@ -45,6 +44,13 @@ public class QuestionMaster : MonoBehaviour
 
     [SerializeField]
     GameObject answerStrike;
+
+
+    [SerializeField]
+    AudioSource correctSound;
+
+    [SerializeField]
+    AudioSource incorrectSound;
 
     int questionsAnswered = 0;
 
@@ -168,6 +174,8 @@ public class QuestionMaster : MonoBehaviour
 
 
 
+
+
         foreach (var item in answerButtons)
         {
             item.GetComponent<Button>().interactable = false;
@@ -177,12 +185,14 @@ public class QuestionMaster : MonoBehaviour
         //Correct answer animation here
         if(currentQuestion.name == answerButtonText[userAnswer].GetComponent<TMP_Text>().text)
         {
+            correctSound.Play();
             answerHighlight.transform.position = answerButtons[correctAnswer].transform.position;
             questionAnimator.SetTrigger("highlight");
         }
         else
         {
-            answerStrike.transform.position = answerButtons[userAnswer].transform.position;
+            incorrectSound.Play();
+            answerStrike.transform.parent = answerButtons[userAnswer].transform;
             questionAnimator.SetTrigger("strike");
         }
 
@@ -245,6 +255,39 @@ public class QuestionMaster : MonoBehaviour
     }
 
 
+    public void ExitEarly()
+    {
+
+        StartCoroutine(IExitEarly());
+
+    }
+
+    IEnumerator IExitEarly()
+    {
+        UIController.Instance.ShowMainMenu();
+        questionsAnswered = 0;
+
+
+        yield return new WaitForSeconds(1f);
+
+
+        //questionAnimator.SetTrigger("next");
+
+        foreach (var item in answerButtons)
+        {
+            item.GetComponent<Image>().color = buttonColour;
+        }
+
+        foreach (var item in answerButtons)
+        {
+            item.GetComponent<Button>().interactable = true;
+        }
+
+        LoadNewQuestion();
+    }
+
+
+
     public void SetNextQuestion()
     {
         foreach (var item in answerButtons)
@@ -254,13 +297,19 @@ public class QuestionMaster : MonoBehaviour
 
         LoadNewQuestion();
 
+        
+    }
 
+    public void ReEnableButtons()
+    {
         foreach (var item in answerButtons)
         {
             item.GetComponent<Button>().interactable = true;
         }
 
     }
+
+
 
 
 }

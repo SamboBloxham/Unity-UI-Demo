@@ -22,7 +22,15 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("AudioVolume");
+
+        if (PlayerPrefs.GetInt("playedBefore") != 0)
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("AudioVolume");
+        }
+
+
+        PlayerPrefs.SetInt("playedBefore", 1);
+
 
         if (PlayerPrefs.GetInt("DarkMode") == 1) darkModeToggle.isOn = true; 
     }

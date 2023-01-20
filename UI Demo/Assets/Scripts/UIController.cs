@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     ParticleSystem confettiParticleSystem;
 
+    [SerializeField]
+    AudioSource highscoreSound;
 
     void Awake()
     {
@@ -64,9 +66,21 @@ public class UIController : MonoBehaviour
     {
         print("highscore CONFET");
 
+        highscoreSound.Play();
         confettiParticleSystem.Play();
     }
 
+
+
+    public void ShowHowToScreen()
+    {
+        uiAnimator.SetBool("inHowToPlay", true);
+    }
+
+    public void HideHowToScreen()
+    {
+        uiAnimator.SetBool("inHowToPlay", false);
+    }
 
 
 }
